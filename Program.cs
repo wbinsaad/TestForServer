@@ -1,7 +1,12 @@
+using System.Reflection;
+using TestForServer.Database;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddDbContext<AppDbContext>();
+builder.Services.AddAutoMapper(typeof(AutoMapProfile));
 
 var app = builder.Build();
 
@@ -15,13 +20,11 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
-
 app.UseRouting();
-
 app.UseAuthorization();
-
-app.MapControllerRoute(
-    name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
-
+app.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");
 app.Run();
+
+
+
+
