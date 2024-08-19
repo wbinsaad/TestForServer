@@ -10,13 +10,6 @@ namespace TestForServer.Database
             
         }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            base.OnConfiguring(optionsBuilder);
-
-            optionsBuilder.UseSqlite("name=ConnectionStrings:DefaultConnection");
-        }
-
         public DbSet<Text> Texts { get; set; }
     }
 }

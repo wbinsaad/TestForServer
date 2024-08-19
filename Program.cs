@@ -1,3 +1,4 @@
+using Microsoft.EntityFrameworkCore;
 using System.Reflection;
 using TestForServer.Database;
 
@@ -5,7 +6,10 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-builder.Services.AddDbContext<AppDbContext>();
+builder.Services.AddDbContext<AppDbContext>(op =>
+    op.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection"))
+);
+
 builder.Services.AddAutoMapper(typeof(AutoMapProfile));
 
 var app = builder.Build();

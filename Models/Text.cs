@@ -26,7 +26,7 @@
         public string latitude { get; set; } = string.Empty;
         public string longitude { get; set; } = string.Empty;
 
-        public DateTime CreateDate { get; set; }
+        public DateTime CreateDate { get; set; } = DateTime.Now;
         public string IPAddress { get; set; } = string.Empty;
     }
 }
